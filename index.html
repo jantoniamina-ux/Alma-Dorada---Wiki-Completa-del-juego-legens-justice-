@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALMA DORADA | Wiki PRO Auto</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#020617;color:#e5e7eb}
+header{background:linear-gradient(135deg,#020617,#1e293b);text-align:center;padding:50px}
+header h1{color:#facc15;margin:0;font-size:42px}
+header p{color:#cbd5f5}
+nav{position:sticky;top:0;background:#020617;padding:12px;text-align:center;z-index:10}
+nav a{color:#38bdf8;margin:0 10px;text-decoration:none;font-weight:bold}
+nav a:hover{color:#facc15}
+input{width:100%;max-width:400px;padding:12px;border-radius:10px;border:none;margin:20px auto;display:block}
+section{max-width:1300px;margin:auto;padding:40px}
+h2{color:#facc15;border-bottom:2px solid #1e293b;padding-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.card{background:#020617;border-radius:18px;padding:18px;border:2px solid #1e293b}
+.card h3{color:#38bdf8;margin:0 0 8px}
+.card p{margin:0 0 8px;color:#cbd5f5;font-size:14px}
+.tag{display:inline-block;background:#1e293b;padding:5px 10px;border-radius:12px;font-size:12px;color:#facc15;margin-right:5px}
+footer{text-align:center;padding:30px;background:#020617;color:#64748b}
+</style>
+</head>
+<body>
+
+<header>
+<h1>ALMA DORADA</h1>
+<p>Wiki PRO Auto – Saint Seiya: Legends of Justice<br>Clan líder: Raúl</p>
+</header>
+
+<input id="buscar" onkeyup="filtrar()" placeholder="Buscar caballero...">
+
+<section id="personajes">
+<h2>📜 Personajes</h2>
+<div class="grid" id="grid-personajes"></div>
+</section>
+
+<footer>ALMA DORADA © Wiki PRO Auto</footer>
+
+<script>
+// Función para filtrar cards
+function filtrar(){
+  let i=document.getElementById("buscar").value.toLowerCase();
+  let c=document.getElementsByClassName("card");
+  for(let x=0;x<c.length;x++){
+    c[x].style.display=c[x].innerText.toLowerCase().includes(i)?"block":"none";
+  }
+}
+
+// Función para cargar personajes desde JSON
+fetch('personajes.json')
+.then(response=>response.json())
+.then(data=>{
+  const grid=document.getElementById('grid-personajes');
+  data.forEach(p=>{
+    const div=document.createElement('div');
+    div.className='card';
+    div.innerHTML=`<h3>${p.nombre} ${p.variante}</h3>
+                   <p>Rol: ${p.rol}</p>
+                   <span class="tag">${p.categoria}</span>
+                   <span class="tag">Tier: ${p.tier}</span>`;
+    grid.appendChild(div);
+  });
+});
+</script>
+
+</body>
+</html>
