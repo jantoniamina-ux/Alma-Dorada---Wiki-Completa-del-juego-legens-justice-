@@ -1,0 +1,30 @@
+[
+  {
+    "nombre": "Seiya",
+    "categoria": "Bronce",
+    "variante": "Normal",
+    "rol": "DPS / Burst",
+    "tier": "S"
+  },
+  {
+    "nombre": "Seiya",
+    "categoria": "Bronce",
+    "variante": "Despertado",
+    "rol": "DPS / Burst",
+    "tier": "S"
+  },
+  {
+    "nombre": "Shaka",
+    "categoria": "Oro",
+    "variante": "Despertado",
+    "rol": "Control",
+    "tier": "S"
+  },
+  {
+    "nombre": "Athena",
+    "categoria": "Dioses",
+    "variante": "",
+    "rol": "Soporte",
+    "tier": "S"
+  }
+]
